@@ -1,0 +1,3 @@
+[submodule "third-party/ninjaDaemon"]
+	path = third-party/ninjaDaemon
+	url = https://github.com/webercalixto/ninjaDaemon.git
