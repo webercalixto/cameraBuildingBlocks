@@ -108,6 +108,7 @@ local.properties
 **/nbproject/Makefile-*.mk
 **/nbproject/Package-*.bash
 build/*
+nbproject/*
 nbbuild/
 dist/
 nbdist/
@@ -124,7 +125,7 @@ CMakeCache.txt
 CMakeFiles
 CMakeScripts
 Testing
-Makefile
+build/Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
@@ -136,3 +137,11 @@ _deps
 *-prefix/
 
 # End of https://www.gitignore.io/api/cmake
+ ### kernel modules ###
+*.o.*
+*.ko*
+*.order
+*.symvers
+*.mod.*
+
+./Makefile
