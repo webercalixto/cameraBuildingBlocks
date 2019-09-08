@@ -14,7 +14,7 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -mtune=cortex-a53 -mcpu=cortex-a53 -m
 
 set(NINJADAEMON_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third-party/ninjaDaemon")
 
-set(LIBPATH_PISTACHE "${NINJADAEMON}/third-party/pistache/build/src/")
+set(LIBPATH_PISTACHE "${NINJADAEMON_DIR}/third-party/pistache/build/src/")
 set(INC_PISTACHE "${NINJADAEMON}/third-party/pistache/include/")
 set(INC_RAPIDJSON "${NINJADAEMON}/third-party/rapidjson/include/")
 set(INC_INIPP "${NINJADAEMON}/third-party/inipp/")
