@@ -1,0 +1,3 @@
+Opencv 4.1.0 built with cmake -DCMAKE_CXX_FLAGS="-DTBB_USE_GCC_BUILTINS=1 -D__TBB_64BIT_ATOMICS=0" -DENABLE_VFPV3=ON -DENABLE_NEON=ON -DBUILD_TESTS=OFF -DWITH_TBB=ON -DCMAKE_BUILD_TYPE=Release ..
+
+Following the guide on https://www.theimpossiblecode.com/blog/build-faster-opencv-raspberry-pi3/
