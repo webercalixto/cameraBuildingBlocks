@@ -10,8 +10,32 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set(CMAKE_CXX_FLAGS_DEBUG "-Og -g")
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror ")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -mtune=cortex-a53 -mcpu=cortex-a53 -mfloat-abi=hard -mfpu=neon-fp-armv8 -mneon-for-64bits")
+
+set(NINJADAEMON_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third-party/ninjaDaemon")
+
+set(LIBPATH_PISTACHE "${NINJADAEMON}/third-party/pistache/build/src/")
+set(INC_PISTACHE "${NINJADAEMON}/third-party/pistache/include/")
+set(INC_RAPIDJSON "${NINJADAEMON}/third-party/rapidjson/include/")
+set(INC_INIPP "${NINJADAEMON}/third-party/inipp/")
+set(INC_NINJADAEMON "${NINJADAEMON}/include/")
+
+
 
 LINK_DIRECTORIES(${LIBPATH_PISTACHE})
 
-find_package(Threads REQUIRED)
+find_package( Threads REQUIRED )
+find_package( OpenCV REQUIRED )
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${INC_NINJADAEMON} ${INC_PISTACHE} ${INC_RAPIDJSON} ${INC_INIPP})
+
+file(GLOB SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+file(GLOB SRC_SHOWIMG "${CMAKE_CURRENT_SOURCE_DIR}/examples/showImg/*.cpp")
+
+add_executable( showImg ${SOURCES} ${SRC_SHOWIMG})
+
+target_link_libraries(showImg PUBLIC 
+	Threads::Threads 
+	stdc++fs
+	${OpenCV_LIBS} 
+	libpistache.a)
