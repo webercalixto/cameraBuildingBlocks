@@ -1,3 +1,6 @@
 [submodule "third-party/ninjaDaemon"]
 	path = third-party/ninjaDaemon
 	url = https://github.com/webercalixto/ninjaDaemon.git
+[submodule "third-party/cross-compiling/tools"]
+	path = third-party/cross-compiling/tools
+	url = https://github.com/raspberrypi/tools.git
