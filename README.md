@@ -1,37 +1,62 @@
-## Welcome to GitHub Pages
+### * Keep in mind this is a work in progress  
 
-You can use the [editor on GitHub](https://github.com/webercalixto/cameraBuildingBlocks/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Author: weber calixto (webersouzacalixto at gmail)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Table of contents
+1. [About this project](#about)  
+  1.1 [Git workflow ](#git_workflow)  
+  1.1 [Dependencies ](#dependencies)  
+2. [Build Instructions](#build_instructions)  
+  2.1 [First Build](#first_build)  
+  2.2 [Subsequent Builds](#subsequent_builds)  
+  2.2 [Clean](#clean) 
 
-### Markdown
+# Aboute this project <a name="about"></a>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This repo will contain several processing blocks, necessary to build a functional IP camera.  
+It is build upon several other projects (ninjadaemon, opencv, rapidjson, pistache, etc)  
 
-```markdown
-Syntax highlighted code block
+My goal is to make easier for others to build their own IP camera devices.
 
-# Header 1
-## Header 2
-### Header 3
+## Exception handling
 
-- Bulleted
-- List
+Some lines with potential exceptions are left un-try-catched intentionally so the ugly runtime error can be seen.
 
-1. Numbered
-2. List
+## Git workflow <a name="git_workflow"></a>
 
-**Bold** and _Italic_ and `Code` text
+I've chosen to work with GitHubflow (i.e Only a master branch with feature branches, no master/develop branching scheme, versioning with git tags).
 
-[Link](url) and ![Image](src)
-```
+Convention: Every master commit must be stable.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Dependencies <a name="dependencies"></a>
 
-### Jekyll Themes
+1. Must have <a href="https://git-lfs.github.com/" target="_blank" >git-lfs</a> installed and enabled to fetch the prebuilt packages on this repo
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/webercalixto/cameraBuildingBlocks/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+2. You will need GCC 8+ or clang 7+ to compile this project, as it makes extensive use of C++17
 
-### Support or Contact
+3. You must install clang-formatter to edit code following this project's code style.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+4. Whenever possible, the blocks use NEON optimizations, targetting for the raspberry pi 3 and similar platforms.  
+For each block, I am trying my best to mantain at least 1 platform-indepent version.  
+
+## Build instructions <a name="build_instructions"></a>
+
+### First Build <a name="first_build"></a>
+
+cd scripts/
+
+./submodules.sh
+
+./build.sh
+
+### Subsequent builds <a name="subsequent_builds"></a>
+
+cd scripts/
+
+./build.sh
+
+### To clean <a name="clean"></a>
+
+cd scripts/
+
+./clean.sh
