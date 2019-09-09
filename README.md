@@ -42,6 +42,8 @@ Convention: Every master commit must be stable.
 4. Whenever possible, the blocks use NEON optimizations, targetting for the raspberry pi 3 and similar platforms.  
 For each block, I am trying my best to mantain at least 1 platform-indepent version.  
 
+5. You will need an modern g++ ARM compiler. On my debian 10, just  *apt install g++-arm-linux-gnueabi* did the trick  
+
 ## Prebuilt packages <a name="prebuilt_packages"></a>
 
 I have prebuilt OpenCV 4.1 for raspbian 10 with NEON, TBB and VFPV3.  
