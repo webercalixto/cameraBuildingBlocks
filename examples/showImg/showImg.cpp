@@ -31,16 +31,18 @@
 
 #include <cstdlib>
 #include <iostream>
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
+/*#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>*/
 using namespace std;
-using namespace cv;
+//using namespace cv;
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-    String imageName( "../data/HappyFish.jpg" ); // by default
+	(void) argc;
+	(void) argv;
+    /*String imageName( "../data/HappyFish.jpg" ); // by default
     if( argc > 1)
     {
         imageName = argv[1];
@@ -54,7 +56,8 @@ int main(int argc, char** argv) {
     }
     namedWindow( "Display window", WINDOW_AUTOSIZE ); // Create a window for display.
     imshow( "Display window", image );                // Show our image inside it.
-    waitKey(0); // Wait for a keystroke in the window
+    waitKey(0); // Wait for a keystroke in the window*/
+	cout << "HELLO WORLD \n";
     return 0;
 }
 

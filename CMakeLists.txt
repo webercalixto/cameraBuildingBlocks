@@ -5,6 +5,11 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+set(CMAKE_CXX_COMPILER ${TOOLCHAIN_DIR}/bin/arm-linux-gnueabihf-g++)
+
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -25,7 +30,7 @@ message(${INC_PISTACHE})
 LINK_DIRECTORIES(${LIBPATH_PISTACHE})
 
 find_package( Threads REQUIRED )
-find_package( OpenCV REQUIRED )
+#find_package( OpenCV REQUIRED )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${INC_NINJADAEMON} ${INC_PISTACHE} ${INC_RAPIDJSON} ${INC_INIPP})
 
@@ -37,5 +42,5 @@ add_executable( showImg ${SOURCES} ${SRC_SHOWIMG})
 target_link_libraries(showImg PUBLIC 
 	Threads::Threads 
 	stdc++fs
-	${OpenCV_LIBS} 
 	libpistache.a)
+#${OpenCV_LIBS} 
