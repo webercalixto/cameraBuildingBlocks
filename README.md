@@ -42,7 +42,10 @@ Convention: Every master commit must be stable.
 4. Whenever possible, the blocks use NEON optimizations, targetting for the raspberry pi 3 and similar platforms.  
 For each block, I am trying my best to mantain at least 1 platform-indepent version.  
 
-5. You will need an modern g++ ARM compiler. On my debian 10, just  *apt install g++-arm-linux-gnueabi** did the trick  
+5. You will need an modern g++ ARM compiler. On my debian 10:  
+apt install g++-arm-linux-gnueabi* crossbuild-essential-arm*  
+Then, to set the default compilar for the armhf:  
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/arm-linux-gnueabihf-gcc 500 --slave /usr/bin/g++ g++ /usr/bin/arm-linux-gnueabihf-g++
 
 ## Prebuilt packages <a name="prebuilt_packages"></a>
 
