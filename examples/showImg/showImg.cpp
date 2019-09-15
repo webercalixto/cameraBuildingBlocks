@@ -42,43 +42,19 @@ void signalHandler(int signum)
     ctx.finish = true;
 }
 
-void startServer(ninjaTypes::_int restServerPort, ninjaTypes::_int numRestServerProcesses,
-                 ninjaTypes::_int maxRestRequestSize)
-{
-    syslog(LOG_INFO, "startServer INIT restServerPort=%ld maxRestRequestSize=%ld", restServerPort, maxRestRequestSize);
-    Pistache::Port    port(restServerPort);
-    Pistache::Address addr(Pistache::Ipv4::any(), port);
-    showImgServer   showImgServer(addr);
-    showImgServer.init(numRestServerProcesses, maxRestRequestSize);
-    showImgServer.start();
-    syslog(LOG_INFO, "startServer END");
-}
-
 void callbackFunc(const int workerNum, const ninjaTypes::workerConfigMap &_workerConfig,
                   const std::shared_ptr<ninjaLogger> &_logger)
 {
     static thread_local bool firstRun = true;
-
+    static showImgServer   showImgServer;
     if (firstRun)
     {
         ninjaTypes::workerConfigMap workerConfig   = _workerConfig;
-        ninjaTypes::_int            restServerPort = std::get<ninjaTypes::_int>(workerConfig["restServerPort"]);
-        ninjaTypes::_int numRestServerProcesses    = std::get<ninjaTypes::_int>(workerConfig["numRestServerProcesses"]);
-        ninjaTypes::_int maxRestRequestSize        = std::get<ninjaTypes::_int>(workerConfig["maxRestRequestSize"]);
         _logger->log(std::string("callbackFunc FIRST RUN INIT workerNum = ") + std::to_string(workerNum));
-        firstRun       = false;
-        std::thread th = std::thread([=] { startServer(restServerPort, numRestServerProcesses, maxRestRequestSize); });
+        firstRun       = false;        
+        showImgServer.init(Pistache::Address(Pistache::Ipv4::any(), Pistache::Port(std::get<ninjaTypes::_int>(workerConfig["restServerPort"]))), std::get<ninjaTypes::_int>(workerConfig["numRestServerProcesses"]), std::get<ninjaTypes::_int>(workerConfig["maxRestRequestSize"]));
+        std::thread th = std::thread([&] { showImgServer.start(); });
         th.detach();
-        /*std::thread th = std::thread([&] {
-            _logger->log("callbackFunc STARTING THREAD restServerPort=" + std::to_string(restServerPort));
-            Pistache::Port    port(restServerPort);
-            Pistache::Address addr(Pistache::Ipv4::any(), port);
-            ninjaRestServer         myNinjaRestServer(addr);
-            myNinjaRestServer.init(numRestServerProcesses, maxRestRequestSize);
-            myNinjaRestServer.start();
-            _logger->log("callbackFunc FINISHING THREAD workerNum=" + std::to_string(workerNum));
-        });
-        th.detach();    */
         _logger->log(std::string("callbackFunc FIRST RUN END workerNum = ") + std::to_string(workerNum));
     }
 }

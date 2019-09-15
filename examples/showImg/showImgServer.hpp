@@ -43,8 +43,9 @@ class showImgServer
     void setRoute();
 
     public:
-    showImgServer(Pistache::Address addr);
-    void init(size_t _numRestServerProcesses, int _maxRestRequestSize);
+    showImgServer();
+    ~showImgServer();
+    void init(Pistache::Address addr, size_t _numRestServerProcesses, int _maxRestRequestSize);
     void start();
 };
 

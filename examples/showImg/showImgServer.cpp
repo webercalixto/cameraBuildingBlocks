@@ -12,18 +12,25 @@
 using namespace std;
 using namespace Pistache;
 
-showImgServer::showImgServer(Address addr)
-    : httpEndpoint(std::make_shared<Http::Endpoint>(addr))
+showImgServer::~showImgServer()
 {
+    cout << "showImgServer DESTRUCTOR\n";
 }
 
-void showImgServer::init(size_t _numRestServerProcesses, int _maxRestRequestSize)
+showImgServer::showImgServer()
+    
 {
+    cout << "showImgServer CONSTRUCTOR\n";
+}
+
+void showImgServer::init(Pistache::Address addr, size_t _numRestServerProcesses, int _maxRestRequestSize)
+{
+    this->httpEndpoint = std::make_shared<Http::Endpoint>(addr);
     auto opts = Http::Endpoint::options()
                     .threads(_numRestServerProcesses)
                     .maxRequestSize(_maxRestRequestSize)
                     .flags(Pistache::Tcp::Options::ReuseAddr | Pistache::Tcp::Options::FastOpen);
-    httpEndpoint->init(opts);
+    this->httpEndpoint->init(opts);
     this->setRoute();
 }
 
