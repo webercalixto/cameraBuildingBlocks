@@ -35,9 +35,10 @@ find_package( Threads REQUIRED )
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${INC_NINJADAEMON} ${INC_PISTACHE} ${INC_RAPIDJSON} ${INC_INIPP})
 
 file(GLOB SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+file(GLOB NINJASOURCES "${NINJADAEMON_DIR}/src/*.cpp")
 file(GLOB SRC_SHOWIMG "${CMAKE_CURRENT_SOURCE_DIR}/examples/showImg/*.cpp")
 
-add_executable( showImg ${SOURCES} ${SRC_SHOWIMG})
+add_executable( showImg ${SOURCES} ${NINJASOURCES} ${SRC_SHOWIMG})
 
 target_link_libraries(showImg PUBLIC 
 	Threads::Threads 
