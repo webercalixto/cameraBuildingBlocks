@@ -34,6 +34,7 @@
 #include <pistache/http.h>
 #include <pistache/router.h>
 #include <pistache/endpoint.h>
+#include "ninjaLogger.hpp"
 class showImgServer
 {
     private:
@@ -43,9 +44,10 @@ class showImgServer
     void setRoute();
 
     public:
+    std::shared_ptr<ninjaLogger> logger;
     showImgServer();
     ~showImgServer();
-    void init(Pistache::Address addr, size_t _numRestServerProcesses, int _maxRestRequestSize);
+    void init(Pistache::Address addr, size_t _numRestServerProcesses, int _maxRestRequestSize,std::shared_ptr<ninjaLogger> _logger);
     void start();
 };
 

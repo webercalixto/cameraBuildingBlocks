@@ -14,17 +14,16 @@ using namespace Pistache;
 
 showImgServer::~showImgServer()
 {
-    cout << "showImgServer DESTRUCTOR\n";
+	 this->logger->log("showImgServer DESTRUCTOR\n");
 }
 
 showImgServer::showImgServer()
-    
 {
-    cout << "showImgServer CONSTRUCTOR\n";
 }
 
-void showImgServer::init(Pistache::Address addr, size_t _numRestServerProcesses, int _maxRestRequestSize)
+void showImgServer::init(Pistache::Address addr, size_t _numRestServerProcesses, int _maxRestRequestSize,std::shared_ptr<ninjaLogger> _logger)
 {
+	this->logger = _logger;
     this->httpEndpoint = std::make_shared<Http::Endpoint>(addr);
     auto opts = Http::Endpoint::options()
                     .threads(_numRestServerProcesses)

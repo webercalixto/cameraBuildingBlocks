@@ -52,7 +52,7 @@ void callbackFunc(const int workerNum, const ninjaTypes::workerConfigMap &_worke
         ninjaTypes::workerConfigMap workerConfig   = _workerConfig;
         _logger->log(std::string("callbackFunc FIRST RUN INIT workerNum = ") + std::to_string(workerNum));
         firstRun       = false;        
-        showImgServer.init(Pistache::Address(Pistache::Ipv4::any(), Pistache::Port(std::get<ninjaTypes::_int>(workerConfig["restServerPort"]))), std::get<ninjaTypes::_int>(workerConfig["numRestServerProcesses"]), std::get<ninjaTypes::_int>(workerConfig["maxRestRequestSize"]));
+        showImgServer.init(Pistache::Address(Pistache::Ipv4::any(), Pistache::Port(std::get<ninjaTypes::_int>(workerConfig["restServerPort"]))), std::get<ninjaTypes::_int>(workerConfig["numRestServerProcesses"]), std::get<ninjaTypes::_int>(workerConfig["maxRestRequestSize"]),ctx.logger);
         std::thread th = std::thread([&] { showImgServer.start(); });
         th.detach();
         _logger->log(std::string("callbackFunc FIRST RUN END workerNum = ") + std::to_string(workerNum));
