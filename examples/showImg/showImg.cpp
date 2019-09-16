@@ -28,12 +28,12 @@
  *
  * Created on September 8, 2019, 4:38 PM
  */
-/*#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>*/
 #include "global.hpp"
 #include "showImgServer.hpp"
 #include <csignal>
 #include <syslog.h>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
 ninjaDaemon ctx("|NINJAEXAMPLEPISTACHE|");
 
 void signalHandler(int signum)
@@ -58,10 +58,13 @@ void callbackFunc(const int workerNum, const ninjaTypes::workerConfigMap &_worke
         _logger->log(std::string("callbackFunc FIRST RUN END workerNum = ") + std::to_string(workerNum));
     }
 }
-
+using namespace cv;
 
 int main(int argc, char *argv[])
 {
+
+    Mat image;
+    image = cv::imread("car.jpg", IMREAD_COLOR);
     /** Until C++ get reflections, this sort of abstraction is necessary to automate variable retrieval **/
     ctx.funcPtr                                 = callbackFunc;
     ctx.workerConfigs["restServerPort"]         = { static_cast<ninjaTypes::_int>(9090) };
