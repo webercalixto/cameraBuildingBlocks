@@ -1,5 +1,6 @@
 global figImg
 global figImgOrig
+global figPlot;
 fig = figure('Renderer', 'painters', 'Position', [0 0 1280 130]);
 pan = uipanel(fig,'Position',[0.00 0.00 0.9999 0.9999]);
 %%ctrl = uicontrol(pan,'Style','slider');
@@ -13,7 +14,7 @@ textLabel01.String = 'Image';
 textLabel01.FontSize = 14;
 global imgSelect
 imgSelect = uicontrol('Style','popupmenu');
-imgSelect.String = {'Lena01','Lena02'};
+imgSelect.String = {'Lena01','Lena02','Lake'};
 imgSelect.Position = [70 95 90 20];
 imgSelect.FontSize = 14;
 textLabel02 = uicontrol('Style','text');
@@ -31,7 +32,7 @@ textLabel03.String = 'Operation: ';
 textLabel03.FontSize = 14;
 global imgOperation
 imgOperation = uicontrol('Style','popupmenu');
-imgOperation.String = {'Gain','Brightness','Power Law'};
+imgOperation.String = {'Gain','Contrast','Brightness','Gamma'};
 imgOperation.Position = [500 95 130 20];
 imgOperation.FontSize = 14;
 global runButton

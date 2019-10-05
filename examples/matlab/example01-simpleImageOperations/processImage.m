@@ -16,10 +16,30 @@ switch imgNum
         img = imread('C:/Lena01.jpg');
     case 2
         img = imread('C:/Lena02.jpg');
+    case 3
+        img = imread('C:/Lake.jpg');        
 end;
+global figPlot
+try
+close(figPlot);
+catch err;
+end
 YUV = getYUV(double(img));
-val = str2num(value);
-YUV = brightness(YUV,val);
+switch operationNum
+    case 1
+        val = str2double(value);
+        YUV = powerLaw(YUV,val,1.0);    
+    case 2
+        val = str2num(value);
+        YUV = contrast(YUV,val);
+    case 3
+        val = str2num(value);
+        YUV = brightness(YUV,val); 
+    case 4
+        val = str2double(value);
+        fprintf('performing gamma of %f\n',val);
+        YUV = powerLaw(YUV,1,val);         
+end;
 RGB = getRGB(YUV);
 showImg(RGB);
 global figImgOrig
@@ -29,5 +49,6 @@ catch err;
 end
 figImgOrig = figure;
 imshow(img);
+set(figImgOrig,'Position', [0 50 681 642])
 end
 
