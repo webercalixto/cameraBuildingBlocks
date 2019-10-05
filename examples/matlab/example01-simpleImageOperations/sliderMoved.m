@@ -10,7 +10,8 @@ function sliderMoved(src,event)
         figImg = figure;        
         fprintf('Vou abrir imagem 01\n');
         img = imread('C:/Lena01.jpg');
-        imshow(img);
+        yuv = getYUV(img);
+        imshow(getRGB(yuv));
     end
     if value == 2
         global figImg
@@ -21,7 +22,8 @@ function sliderMoved(src,event)
         figImg = figure;        
         fprintf('Vou abrir imagem 02\n');
         img = imread('C:/Lena02.jpg');
-        imshow(img);
+        yuv = getYUV(img);
+        imshow(getRGB(yuv));
     end
 end
 
