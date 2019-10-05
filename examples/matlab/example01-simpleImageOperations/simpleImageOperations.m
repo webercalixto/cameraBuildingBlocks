@@ -1,4 +1,4 @@
-global fig2
+global figImg
 %%fig2 = figure;
 fig = figure;
 pan = uipanel(fig,'Position',[0.01 0.01 0.99 0.99]);
