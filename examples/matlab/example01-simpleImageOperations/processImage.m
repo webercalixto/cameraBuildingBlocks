@@ -50,5 +50,20 @@ end
 figImgOrig = figure;
 imshow(img);
 set(figImgOrig,'Position', [0 50 681 642])
+global figHist;
+try
+close(figHist);
+catch err;
+end
+figHist = figure(10);
+hold on
+Y = YUV(:,:,1);
+Y = Y./255;
+subplot(1,2,2),imhist(Y),title('Processed image');
+YUV = getYUV(double(img));
+Y = YUV(:,:,1);
+Y = Y./255;
+subplot(1,2,1),imhist(Y),title('Original image');
+hold off
 end
 

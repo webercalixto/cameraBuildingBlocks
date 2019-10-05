@@ -1,4 +1,3 @@
-%% definition: https://en.wikipedia.org/wiki/Gamma_correction
 function [ imgOut ] = powerLaw( img, c, gamma )
 Y=img(:,:,1);
 U=img(:,:,2);

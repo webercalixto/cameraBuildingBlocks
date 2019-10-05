@@ -1,6 +1,7 @@
 global figImg
 global figImgOrig
 global figPlot;
+global figHist;
 fig = figure('Renderer', 'painters', 'Position', [0 0 1280 130]);
 pan = uipanel(fig,'Position',[0.00 0.00 0.9999 0.9999]);
 %%ctrl = uicontrol(pan,'Style','slider');
