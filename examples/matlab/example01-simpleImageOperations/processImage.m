@@ -17,7 +17,13 @@ switch imgNum
     case 2
         img = imread('C:/Lena02.jpg');
     case 3
-        img = imread('C:/Lake.jpg');        
+        img = imread('C:/Lake.jpg');   
+    case 4
+        img = imread('C:/Moon01.jpg');  
+    case 5
+        img = imread('C:/Moon02.jpg');   
+    case 6
+        img = imread('C:/Girl01.jpg');         
 end;
 global figPlot
 try
@@ -38,7 +44,10 @@ switch operationNum
     case 4
         val = str2double(value);
         fprintf('performing gamma of %f\n',val);
-        YUV = powerLaw(YUV,1,val);         
+        YUV = powerLaw(YUV,1,val);  
+    case 5
+        val = str2double(value);
+        YUV = setSaturation(YUV,val);
 end;
 RGB = getRGB(YUV);
 showImg(RGB);

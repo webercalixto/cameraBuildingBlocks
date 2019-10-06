@@ -15,7 +15,7 @@ textLabel01.String = 'Image';
 textLabel01.FontSize = 14;
 global imgSelect
 imgSelect = uicontrol('Style','popupmenu');
-imgSelect.String = {'Lena01','Lena02','Lake'};
+imgSelect.String = {'Lena01','Lena02','Lake','Moon01','Moon02','Girl01'};
 imgSelect.Position = [70 95 90 20];
 imgSelect.FontSize = 14;
 textLabel02 = uicontrol('Style','text');
@@ -33,7 +33,7 @@ textLabel03.String = 'Operation: ';
 textLabel03.FontSize = 14;
 global imgOperation
 imgOperation = uicontrol('Style','popupmenu');
-imgOperation.String = {'Gain','Contrast','Brightness','Gamma'};
+imgOperation.String = {'Gain','Contrast','Brightness','Gamma','Saturation'};
 imgOperation.Position = [500 95 130 20];
 imgOperation.FontSize = 14;
 global runButton
